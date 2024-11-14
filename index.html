@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loy Kratong Festival</title>
+</head>
+<body>
+    <div class="container">
+        <h1>ลอยกระทงออนไลน์</h1>
+        <!-- <p>เขียนคำอวยพรของคุณและลอยกระทงในแม่น้ำเสมือน</p> -->
+
+        <div class="wish-section">
+            <textarea id="wishText" placeholder="เขียนคำอวยพรของคุณที่นี่..."></textarea>
+            <button onclick="launchKratong()">ลอยกระทง</button>
+        </div>
+
+        <div class="river" id="river">
+            <!-- กระทงจะปรากฏในส่วนนี้ -->
+        </div>
+    </div>
+</body>
+</html>
+<style>
+    * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #283d91;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+}
+
+.container {
+    max-width: 600px;
+    width: 100%;
+    padding: 20px;
+}
+
+h1 {
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+p {
+    margin-bottom: 20px;
+    font-size: 1.1em;
+}
+
+.wish-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: none;
+    font-size: 1em;
+    resize: none;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 1em;
+    color: #fff;
+    background-color: #f08080;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #ff5e5e;
+}
+
+.river {
+    width: 100%;
+    height: 300px;
+    background-color: #2a7ca7;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.kratong {
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100px;
+    animation: float 5s linear infinite alternate;
+}
+
+.kratong img {
+    width: 120px; /* ขนาดใหญ่ขึ้น */
+    border-radius: 50%;
+    box-shadow: 0px 0px 15px rgba(255, 223, 0, 0.7); /* เพิ่มเงาสีเหลืองสว่าง */
+}
+
+
+.kratong p {
+    background-color: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 0.8em;
+    margin-top: 5px;
+}
+
+@keyframes float {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(-20px);
+    }
+}
+
+</style>
+<script>function launchKratong() {
+    const wishText = document.getElementById("wishText").value;
+    
+    if (!wishText.trim()) {
+        alert("โปรดเขียนคำอวยพรก่อนลอยกระทง");
+        return;
+    }
+
+    const river = document.getElementById("river");
+
+    // สร้างองค์ประกอบกระทง
+    const kratong = document.createElement("div");
+    kratong.className = "kratong";
+
+    // รูปภาพกระทง
+    const kratongImage = document.createElement("img");
+    kratongImage.src = "DB.png";
+    kratong.alt = "กระทง";
+    kratong.appendChild(kratongImage);
+
+    // ข้อความคำอวยพร
+    const wishParagraph = document.createElement("p");
+    wishParagraph.textContent = wishText;
+    kratong.appendChild(wishParagraph);
+
+    // เพิ่มกระทงลงในแม่น้ำ
+    river.appendChild(kratong);
+
+    // เคลียร์ข้อความใน textarea หลังลอยกระทง
+    document.getElementById("wishText").value = "";
+
+    // กำหนดให้กระทงเลื่อนไปด้านข้างแบบสุ่ม
+    kratong.style.left = Math.random() * 80 + "%";
+    
+    // กระทงลอยไปแล้วจะค่อยๆ จางหายไปหลังจาก 10 วินาที
+    setTimeout(() => {
+        kratong.remove();
+    }, 10000);
+}
+</script>

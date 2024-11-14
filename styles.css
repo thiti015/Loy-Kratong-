@@ -1,0 +1,111 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #283d91;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+}
+
+.container {
+    max-width: 600px;
+    width: 100%;
+    padding: 20px;
+}
+
+h1 {
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+p {
+    margin-bottom: 20px;
+    font-size: 1.1em;
+}
+
+.wish-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: none;
+    font-size: 1em;
+    resize: none;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 1em;
+    color: #fff;
+    background-color: #f08080;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #ff5e5e;
+}
+
+.river {
+    width: 100%;
+    height: 300px;
+    background-color: #2a7ca7;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.kratong {
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100px;
+    animation: float 5s linear infinite alternate;
+}
+
+.kratong img {
+    width: 120px; /* ขนาดใหญ่ขึ้น */
+    border-radius: 50%;
+    box-shadow: 0px 0px 15px rgba(255, 223, 0, 0.7); /* เพิ่มเงาสีเหลืองสว่าง */
+}
+
+
+.kratong p {
+    background-color: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 0.8em;
+    margin-top: 5px;
+}
+
+@keyframes float {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(-20px);
+    }
+}
